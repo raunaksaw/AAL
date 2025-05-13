@@ -1,0 +1,47 @@
+#include <stdio.h>
+
+int partition(int arr[], int low, int high) {
+    int pivot = arr[high];
+    int i = low - 1;
+
+    for (int j = low; j < high; j++) {
+        if (arr[j] <= pivot) {
+            i++;
+            int temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
+        }
+    }
+
+    int temp = arr[i + 1];
+    arr[i + 1] = arr[high];
+    arr[high] = temp;
+
+    return i + 1;
+}
+
+int quickselect(int arr[], int low, int high, int k) {
+    if (low <= high) {
+        int pi = partition(arr, low, high);
+
+        if (pi == k) {
+            return arr[pi];
+        } else if (pi > k) {
+            return quickselect(arr, low, pi - 1, k);
+        } else {
+            return quickselect(arr, pi + 1, high, k);
+        }
+    }
+    return -1;
+}
+
+int main() {
+    int arr[] = {12, 3, 5, 7, 19, 4, 2, 10};
+    int n = sizeof(arr) / sizeof(arr[0]);
+    int k = 4; // Find the 4th smallest element (index 3)
+
+    int result = quickselect(arr, 0, n - 1, k - 1);
+    printf("The %dth smallest element is %d\n", k, result);
+
+    return 0;
+}
