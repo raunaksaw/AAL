@@ -1,0 +1,132 @@
+Output
+
+Binary Search (Bubble Sort)
+
+Sorted array: 4 9 12 23 45 56 78 
+Enter the element to search: 5
+Element not found.
+
+
+Bubble Sort Algorithm
+
+Unsorted array: 64 25 12 22 11 
+Sorted array: 11 12 22 25 64 
+
+
+
+Floyds Algorithm
+
+Shortest distances between every pair of vertices:
+0 2 -2147483646 -2147483648 
+1 0 -2147483647 -2147483647 
+-2147483646 -2147483648 -12 -18 
+-2147483648 -2147483646 -18 -24 
+
+
+
+Heap Sort
+
+Sorted array: 5 6 7 11 12 13 
+
+
+
+Insertion Sort(Decrease and Conquer)
+
+Original array: 
+12 11 13 5 6 
+Sorted array: 
+5 6 11 12 13 
+
+
+
+
+Kruskal's Algorithm
+
+Edges in MST:
+2 -- 3 == 4
+0 -- 3 == 5
+0 -- 1 == 10
+Weight of MST: 19
+
+
+
+Linear Search
+
+Element found at index 2.
+
+
+
+Merge Sort
+
+int arr[] = {12, 11, 13, 5, 6, 7};
+Sorted array: 5 6 7 11 12 13
+
+
+
+
+N Queens Problem
+
+1 0 0 0 0 0 0 0 
+0 0 0 0 0 0 1 0 
+0 0 0 0 1 0 0 0 
+0 0 0 0 0 0 0 1 
+0 1 0 0 0 0 0 0 
+0 0 0 1 0 0 0 0 
+0 0 0 0 0 1 0 0 
+0 0 1 0 0 0 0 0 
+
+
+
+
+
+Pattern Matching (Brute Force)
+
+Pattern found at index 0
+Pattern found at index 10
+Pattern found at index 15
+
+
+
+Prims Algorithm
+
+
+Edge 	Weight
+0 - 1 	2
+1 - 2 	3
+0 - 3 	6
+1 - 4 	5
+
+
+
+
+
+Quick Sort
+
+Enter the number of elements in the array: 5
+Array before quick sort:
+25 5 91 28 48 
+
+Array after quick sort:
+5 25 28 48 91 
+Time taken for quick sort: 0.000001 seconds
+
+
+
+Selection Sort
+
+The 4th smallest element is 5
+
+
+
+
+
+Topological Sort
+
+Topological Sort of the graph: 
+0 1 2 3 4 5 
+
+
+
+Travelling Salesperson Problem
+
+Minimum cost: 80
