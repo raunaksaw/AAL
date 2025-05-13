@@ -1,0 +1,85 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+#define MAX_EDGES 20
+#define MAX_VERTICES 10
+
+typedef struct Edge {
+    int u, v, weight;
+} Edge;
+
+typedef struct Subset {
+    int parent;
+    int rank;
+} Subset;
+
+Edge edges[MAX_EDGES];
+Subset subsets[MAX_VERTICES];
+
+int compareEdges(const void *a, const void *b) {
+    return ((Edge *)a)->weight - ((Edge *)b)->weight;
+}
+
+int find(int i) {
+    if (subsets[i].parent != i)
+        subsets[i].parent = find(subsets[i].parent);
+    return subsets[i].parent;
+}
+
+void unionSets(int x, int y) {
+    int rootX = find(x);
+    int rootY = find(y);
+
+    if (subsets[rootX].rank < subsets[rootY].rank)
+        subsets[rootX].parent = rootY;
+    else if (subsets[rootX].rank > subsets[rootY].rank)
+        subsets[rootY].parent = rootX;
+    else {
+        subsets[rootY].parent = rootX;
+        subsets[rootX].rank++;
+    }
+}
+
+void kruskal(int vertices, int edgesCount) {
+    qsort(edges, edgesCount, sizeof(Edge), compareEdges);
+
+    for (int i = 0; i < vertices; i++) {
+        subsets[i].parent = i;
+        subsets[i].rank = 0;
+    }
+
+    int mstWeight = 0;
+    printf("Edges in MST:\n");
+
+    for (int i = 0; i < edgesCount; i++) {
+        int u = edges[i].u;
+        int v = edges[i].v;
+        int weight = edges[i].weight;
+
+        int rootU = find(u);
+        int rootV = find(v);
+
+        if (rootU != rootV) {
+            printf("%d -- %d == %d\n", u, v, weight);
+            mstWeight += weight;
+            unionSets(rootU, rootV);
+        }
+    }
+
+    printf("Weight of MST: %d\n", mstWeight);
+}
+
+int main() {
+    int vertices = 4;
+    int edgesCount = 5;
+
+    edges[0].u = 0; edges[0].v = 1; edges[0].weight = 10;
+    edges[1].u = 0; edges[1].v = 2; edges[1].weight = 6;
+    edges[2].u = 0; edges[2].v = 3; edges[2].weight = 5;
+    edges[3].u = 1; edges[3].v = 3; edges[3].weight = 15;
+    edges[4].u = 2; edges[4].v = 3; edges[4].weight = 4;
+
+    kruskal(vertices, edgesCount);
+
+    return 0;
+}
